@@ -1,0 +1,12 @@
+### Starting build.
+# Target: cc_lex.mll, tags: { extension:mll, file:cc_lex.mll, lexer, ocaml, ocamllex, quiet }
+ocamllex.opt -q cc_lex.mll # cached
+# Target: cc_lex.ml.depends, tags: { extension:ml, file:cc_lex.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc_lex.ml > cc_lex.ml.depends # cached
+# Target: cc_lex.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:cc_lex.cmo, file:cc_lex.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o cc_lex.cmo cc_lex.ml # cached
+# Target: cc_lex.cmx, tags: { compile, extension:cmx, extension:ml, file:cc_lex.cmx, file:cc_lex.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o cc_lex.cmx cc_lex.ml
+# Target: cc_lex.native, tags: { dont_link_with, extension:native, file:cc_lex.native, link, native, ocaml, program, quiet }
+ocamlopt.opt cc_lex.cmx -o cc_lex.native
+# Compilation successful.

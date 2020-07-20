@@ -1,0 +1,2 @@
+
+ocaml -I _build _build/cc_ast.cmo _build/cc_parse.cmo _build/cc_lex.cmo _build/cc.cmo

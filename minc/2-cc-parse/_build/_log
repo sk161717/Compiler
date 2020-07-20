@@ -1,0 +1,39 @@
+### Starting build.
+# Target: cc.ml.depends, tags: { extension:ml, file:cc.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc.ml > cc.ml.depends # cached
+# Target: cc_lex.mll, tags: { extension:mll, file:cc_lex.mll, lexer, ocaml, ocamllex, quiet }
+ocamllex.opt -q cc_lex.mll # cached
+# Target: cc_lex.ml.depends, tags: { extension:ml, file:cc_lex.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc_lex.ml > cc_lex.ml.depends # cached
+# Target: cc_parse.mly.depends, tags: { extension:mly, file:cc_parse.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --raw-depend --ocamldep 'ocamldep.opt -modules' cc_parse.mly > cc_parse.mly.depends # cached
+# Target: cc_ast.ml.depends, tags: { extension:ml, file:cc_ast.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc_ast.ml > cc_ast.ml.depends # cached
+# Target: cc_ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:cc_ast.cmo, file:cc_ast.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o cc_ast.cmo cc_ast.ml # cached
+# Target: cc_parse.mly, tags: { byte, compile, extension:ml, extension:mly, file:cc_parse.ml, file:cc_parse.mly, infer, menhir, ocaml, parser, quiet }
+menhir --ocamlc ocamlc.opt --infer cc_parse.mly # cached
+# Target: cc_parse.mli.depends, tags: { extension:mli, file:cc_parse.mli, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc_parse.mli > cc_parse.mli.depends # cached
+# Target: cc_parse.cmi, tags: { byte, compile, extension:mli, file:cc_parse.mli, interf, ocaml, quiet }
+ocamlc.opt -c -o cc_parse.cmi cc_parse.mli # cached
+# Target: cc_lex.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:cc_lex.cmo, file:cc_lex.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o cc_lex.cmo cc_lex.ml # cached
+# Target: cc.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:cc.cmo, file:cc.ml, implem, ocaml, quiet }
+ocamlc.opt -c -o cc.cmo cc.ml # cached
+# Target: cc_parse.ml.depends, tags: { extension:ml, file:cc_parse.ml, ocaml, ocamldep, quiet }
+ocamldep.opt -modules cc_parse.ml > cc_parse.ml.depends # cached
+# Target: cc_ast.cmx, tags: { compile, extension:cmx, extension:ml, file:cc_ast.cmx, file:cc_ast.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o cc_ast.cmx cc_ast.ml
+# Target: cc_parse.cmx, tags: { compile, extension:cmx, extension:ml, file:cc_parse.cmx, file:cc_parse.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o cc_parse.cmx cc_parse.ml
+# Target: cc_lex.cmx, tags: { compile, extension:cmx, extension:ml, file:cc_lex.cmx, file:cc_lex.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o cc_lex.cmx cc_lex.ml
+# Target: cc.cmx, tags: { compile, extension:cmx, extension:ml, file:cc.cmx, file:cc.ml, implem, native, ocaml, quiet }
+ocamlopt.opt -c -o cc.cmx cc.ml
++ ocamlopt.opt -c -o cc.cmx cc.ml
+File "cc.ml", line 34, characters 6-7:
+Warning 26: unused variable t.
+# Target: cc.native, tags: { dont_link_with, extension:native, file:cc.native, link, native, ocaml, program, quiet }
+ocamlopt.opt cc_ast.cmx cc_parse.cmx cc_lex.cmx cc.cmx -o cc.native
+# Compilation successful.

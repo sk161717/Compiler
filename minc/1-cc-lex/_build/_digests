@@ -1,0 +1,7 @@
+"Rule: ocamllex (%=cc_lex )": "\251\194\146\164\163-?r\239m\173\245\176<\242H"
+"Rule: ocaml: cmx* & o* -> native (%=cc_lex )": " \248~\153N\214\"\231\143W\169\027m\170\223S"
+"Rule: ocaml: ml -> cmo & cmi (%=cc_lex )": "\177\195\151k\017%\166\023g\224\236\012C\233\236Q"
+"Resource: /home/u20002/notebooks/lex-parse/minc/1-cc-lex/cc_lex.mll": "\bA\023/\178\218\167z\235p~\151\017L\2536"
+"Rule: ocaml: cmo* -> byte (%=cc_lex )": "\192ow\164\173\182 \130\018b\136*\023p\174x"
+"Rule: ocaml dependencies ml (%=cc_lex )": "\161\000\152\186\190-\247\150\135\021\248V\149\004\170\166"
+"Rule: ocaml: ml & cmi -> cmx & o (%=cc_lex )": "\149\139\205\245\236\171\031\182\0044\172\145\023\203\179\182"
